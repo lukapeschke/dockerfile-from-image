@@ -1,5 +1,9 @@
 # Dockerfile from image
 
+**This project is only at the proof-of-concept state yet**
+
+## How To
+
 The goal of this project is to easily generate a Dockerfile from an existing
 Docker image.
 
@@ -13,7 +17,7 @@ To get a Dockerfile from an existing image:
 
     docker run --rm -v '/var/run/docker.sock:/var/run/docker.sock' lukapeschke/dfa <IMAGE_ID>
 
-# Example with the official ubuntu image:
+## Example with the official ubuntu image:
 
     $ docker images
     REPOSITORY          TAG                 IMAGE ID            CREATED
