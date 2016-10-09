@@ -7,7 +7,8 @@
 The goal of this project is to easily generate a Dockerfile from an existing
 Docker image.
 
-To build the image from source:
+To build the image from source (this step is not mandatory as the image also
+is on the Docker Hub):
 
     git clone https://github.com/lukapeschke/dockerfile-from-image.git
     cd dockerfile-from-image
