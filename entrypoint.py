@@ -13,11 +13,8 @@ class MainObj(object):
         self.cmds = []
         self.cli = Client(base_url='unix://var/run/docker.sock')
         self._get_image(argv[-1])
-        # print(self.img)
         self.hist = self.cli.history(self.img['RepoTags'][0])
-        # print(self.hist)
         self._parse_history()
-        # print(self.cmds)
         self.cmds.reverse()
         self._print_cmds()
 
@@ -38,7 +35,7 @@ class MainObj(object):
             to_add = step.split("#(nop) ")[1]
         else:
             to_add = ("RUN {}".format(step))
-        to_add = to_add.replace("&&", "\\\n&&")
+        to_add = to_add.replace("&&", "\\\n    &&")
         self.cmds.append(to_add)
 
     def _parse_history(self, rec=False):
