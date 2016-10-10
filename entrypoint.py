@@ -36,7 +36,7 @@ class MainObj(object):
         else:
             to_add = ("RUN {}".format(step))
         to_add = to_add.replace("&&", "\\\n    &&")
-        self.cmds.append(to_add)
+        self.cmds.append(to_add.strip(' '))
 
     def _parse_history(self, rec=False):
         first_tag = False
@@ -51,4 +51,4 @@ class MainObj(object):
         if not rec:
             self.cmds.append("FROM {}".format(actual_tag))
 
-my_obj = MainObj()        
+my_obj = MainObj()
