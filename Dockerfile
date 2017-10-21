@@ -6,7 +6,7 @@ RUN  apk add --update python3 wget \
      && python3 get-pip.py \
      && rm get-pip.py \
      && pip3 install -U docker-py pip \
-     && yes | pip uninstall pip
+     && yes | pip3 uninstall pip
 
 COPY entrypoint.py /root
 
