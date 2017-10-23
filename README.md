@@ -2,6 +2,9 @@
 
 **This project is only at the proof-of-concept state yet**
 
+I would happily add features to this project, feel free to create an issue
+for any suggestion.
+
 ## How To
 
 The goal of this project is to easily generate a Dockerfile from an existing
