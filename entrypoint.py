@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from sys import argv, exit
-import sys
+import re
 
 import docker
 
@@ -34,10 +34,13 @@ class Main:
             raise ImageNotFound("Image {} not found\n".format(image_id))
 
     def _insert_step(self, step):
+        # ignore the end "# buildkit" comment
+        step = re.sub("\s*#.+$", "", step)
         if "#(nop)" in step:
             to_add = step.split("#(nop) ")[1]
         else:
-            to_add = "RUN {}".format(step)
+            # step may contains "/bin/sh -c ", just ignore it
+            to_add = "{}".format(step.replace("/bin/sh -c ", ""))
         to_add = to_add.replace("&&", "\\\n    &&")
         self.cmds.append(to_add.strip(" "))
 
