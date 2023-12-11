@@ -39,7 +39,7 @@ class Main:
             to_add = step.split("#(nop)")[1].strip()
         else:
             # step may contains "/bin/sh -c ", just ignore it
-            to_add = "{}".format(step.replace("/bin/sh -c ", ""))
+            to_add = "RUN {}".format(step.replace("/bin/sh -c ", ""))
         to_add = to_add.replace("&&", "\\\n    &&")
         self.cmds.append(to_add.strip(" "))
 
