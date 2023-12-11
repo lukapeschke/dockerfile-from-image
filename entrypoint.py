@@ -12,7 +12,6 @@ class ImageNotFound(Exception):
 
 class Main:
     def __init__(self):
-        super(Main, self).__init__()
         self.cmds = []
         self.client = docker.from_env()
         if len(argv) < 2:
@@ -35,9 +34,9 @@ class Main:
 
     def _insert_step(self, step):
         # ignore the end "# buildkit" comment
-        step = re.sub("\s*#.+$", "", step)
+        step = re.sub("\s*# buildkit$", "", step)
         if "#(nop)" in step:
-            to_add = step.split("#(nop) ")[1]
+            to_add = step.split("#(nop)")[1].strip()
         else:
             # step may contains "/bin/sh -c ", just ignore it
             to_add = "{}".format(step.replace("/bin/sh -c ", ""))
